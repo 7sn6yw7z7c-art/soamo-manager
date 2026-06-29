@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <title>SOAMO Manager</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <div class="brand">SOAMO Manager</div>
+      <div class="sub">VZT materiál • poptávky • porovnání cen</div>
+    </div>
+    <button id="installBtn" hidden>Instalovat</button>
+  </header>
+
+  <main>
+    <section class="card hero">
+      <h1>Rychlé porovnání dodavatelů</h1>
+      <p>Přidej položku, rozměr, délku, stěnu a ceny od dodavatelů. Aplikace ukáže nejlevnější nabídku a rozdíl.</p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Položka</h2>
+        <label>Název položky<input id="itemName" placeholder="např. Spiro potrubí"></label>
+        <label>Rozměr<input id="itemSize" placeholder="např. Ø160 / 400×200"></label>
+        <label>Délka<input id="itemLength" placeholder="např. 3 m"></label>
+        <label>Stěna<input id="itemWall" placeholder="např. 0,5 mm"></label>
+        <label>Množství<input id="itemQty" type="number" min="1" value="1"></label>
+        <button id="addItem">Přidat položku</button>
+      </div>
+
+      <div class="card">
+        <h2>Cena dodavatele</h2>
+        <label>Dodavatel<input id="supplier" placeholder="např. Lindab / Elektrodesign"></label>
+        <label>Cena za kus / metr<input id="price" type="number" min="0" step="0.01" placeholder="Kč bez DPH"></label>
+        <label>Vybrat položku<select id="priceItem"></select></label>
+        <button id="addPrice">Přidat cenu</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2>Přehled</h2>
+        <div>
+          <button class="secondary" id="exportJson">Export</button>
+          <button class="secondary" id="clearAll">Smazat vše</button>
+        </div>
+      </div>
+      <div id="summary"></div>
+    </section>
+  </main>
+
+  <template id="itemTpl">
+    <article class="item">
+      <div class="item-head">
+        <div>
+          <h3></h3>
+          <p></p>
+        </div>
+        <button class="danger">Smazat</button>
+      </div>
+      <div class="prices"></div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
