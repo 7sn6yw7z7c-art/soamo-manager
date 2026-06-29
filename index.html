@@ -3,72 +3,74 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SOAMO Manager – porovnání nabídek</title>
   <meta name="theme-color" content="#0f172a">
-  <title>SOAMO Manager</title>
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div>
-      <div class="brand">SOAMO Manager</div>
-      <div class="sub">VZT materiál • poptávky • porovnání cen</div>
+<header>
+  <div>
+    <h1>SOAMO Manager</h1>
+    <p>Porovnání dodavatelských nabídek pro VZT materiál</p>
+  </div>
+  <button id="installBtn" hidden>Instalovat</button>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1) Zakázka</h2>
+    <div class="grid two">
+      <label>Název zakázky <input id="projectName" placeholder="Např. Fitness centrum…"></label>
+      <label>Poznámka <input id="projectNote" placeholder="Investor, termín, místo…"></label>
     </div>
-    <button id="installBtn" hidden>Instalovat</button>
-  </header>
+  </section>
 
-  <main>
-    <section class="card hero">
-      <h1>Rychlé porovnání dodavatelů</h1>
-      <p>Přidej položku, rozměr, délku, stěnu a ceny od dodavatelů. Aplikace ukáže nejlevnější nabídku a rozdíl.</p>
-    </section>
+  <section class="card">
+    <h2>2) Dodavatelé</h2>
+    <div class="row">
+      <input id="supplierInput" placeholder="Název dodavatele">
+      <button id="addSupplier">Přidat dodavatele</button>
+    </div>
+    <div id="suppliers" class="chips"></div>
+  </section>
 
-    <section class="grid">
-      <div class="card">
-        <h2>Položka</h2>
-        <label>Název položky<input id="itemName" placeholder="např. Spiro potrubí"></label>
-        <label>Rozměr<input id="itemSize" placeholder="např. Ø160 / 400×200"></label>
-        <label>Délka<input id="itemLength" placeholder="např. 3 m"></label>
-        <label>Stěna<input id="itemWall" placeholder="např. 0,5 mm"></label>
-        <label>Množství<input id="itemQty" type="number" min="1" value="1"></label>
-        <button id="addItem">Přidat položku</button>
-      </div>
+  <section class="card">
+    <h2>3) Položky</h2>
+    <div class="toolbar">
+      <button id="addItem">+ Přidat položku</button>
+      <button id="sampleData">Ukázková data</button>
+      <button id="clearAll" class="danger">Smazat vše</button>
+    </div>
+    <div class="tableWrap">
+      <table id="itemsTable">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
 
-      <div class="card">
-        <h2>Cena dodavatele</h2>
-        <label>Dodavatel<input id="supplier" placeholder="např. Lindab / Elektrodesign"></label>
-        <label>Cena za kus / metr<input id="price" type="number" min="0" step="0.01" placeholder="Kč bez DPH"></label>
-        <label>Vybrat položku<select id="priceItem"></select></label>
-        <button id="addPrice">Přidat cenu</button>
-      </div>
-    </section>
+  <section class="card">
+    <h2>4) Rychlý import z Excelu / e‑mailu</h2>
+    <p class="muted">Vlož tabulku: <b>Název, Rozměr, Délka, Stěna, Množství, Jednotka, Dodavatel, Cena/ks</b>. Funguje i kopírování z Excelu.</p>
+    <textarea id="pasteBox" placeholder="Sem vlož řádky z nabídky…"></textarea>
+    <div class="toolbar">
+      <button id="importBtn">Importovat vložené řádky</button>
+    </div>
+  </section>
 
-    <section class="card">
-      <div class="toolbar">
-        <h2>Přehled</h2>
-        <div>
-          <button class="secondary" id="exportJson">Export</button>
-          <button class="secondary" id="clearAll">Smazat vše</button>
-        </div>
-      </div>
-      <div id="summary"></div>
-    </section>
-  </main>
+  <section class="card">
+    <h2>5) Výsledek</h2>
+    <div id="summary" class="summary"></div>
+    <div class="toolbar">
+      <button id="exportCsv">Export CSV</button>
+      <button id="copySummary">Kopírovat souhrn</button>
+    </div>
+  </section>
+</main>
 
-  <template id="itemTpl">
-    <article class="item">
-      <div class="item-head">
-        <div>
-          <h3></h3>
-          <p></p>
-        </div>
-        <button class="danger">Smazat</button>
-      </div>
-      <div class="prices"></div>
-    </article>
-  </template>
-
-  <script src="app.js"></script>
+<footer>Data se ukládají jen v tomto zařízení do prohlížeče.</footer>
+<script src="app.js"></script>
 </body>
 </html>
