@@ -1,0 +1,1 @@
+# soamo-manager
