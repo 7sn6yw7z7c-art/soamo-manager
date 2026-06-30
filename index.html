@@ -1,77 +1,14 @@
 <!doctype html>
 <html lang="cs">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>SOAMO Manager – porovnání nabídek</title>
-  <meta name="theme-color" content="#0f172a">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon-192.png">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-  <div>
-    <h1>SOAMO Manager</h1>
-    <p>Porovnání nabídek a ceníků pro SOAMO</p>
-  </div>
-  <button id="installBtn" hidden>Instalovat</button>
-</header>
-
-<main>
-  <section class="card">
-    <h2>1) Zakázka</h2>
-    <div class="grid two">
-      <label>Název zakázky <input id="projectName" placeholder="Např. Fitness centrum…"></label>
-      <label>Poznámka <input id="projectNote" placeholder="Investor, termín, místo…"></label>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>2) Dodavatelé</h2>
-    <div class="row">
-      <input id="supplierInput" placeholder="Název dodavatele">
-      <button id="addSupplier">Přidat dodavatele</button>
-    </div>
-    <div id="suppliers" class="chips"></div>
-  </section>
-
-  <section class="card">
-    <h2>3) Položky</h2>
-    <div class="toolbar">
-      <button id="addItem">+ Přidat položku</button>
-      <button id="loadPragopolair">Načíst M-klima + Pragopolair</button>
-      <button id="sampleData">Ukázková data</button>
-      <button id="clearAll" class="danger">Smazat vše</button>
-    </div>
-    <div class="tableWrap">
-      <table id="itemsTable">
-        <thead></thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>4) Rychlý import z Excelu / e‑mailu</h2>
-    <p class="muted">Vlož tabulku: <b>Název, Rozměr, Délka, Stěna, Množství, Jednotka, Dodavatel, Cena/ks</b>. Funguje i kopírování z Excelu.</p>
-    <textarea id="pasteBox" placeholder="Sem vlož řádky z nabídky…"></textarea>
-    <div class="toolbar">
-      <button id="importBtn">Importovat vložené řádky</button>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>5) Výsledek</h2>
-    <div id="summary" class="summary"></div>
-    <div class="toolbar">
-      <button id="exportCsv">Export CSV</button>
-      <button id="copySummary">Kopírovat souhrn</button>
-    </div>
-  </section>
-</main>
-
-<footer>Data se ukládají jen v tomto zařízení do prohlížeče.</footer>
-<script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>SOAMO Manager</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
